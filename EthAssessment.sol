@@ -15,27 +15,26 @@ pragma solidity 0.8.18;
        to the amount that is supposed to be burned.
 */
 
-contract MyToken { // Replace with your desired contract name
+contract MyToken {
 
-    // Public variables here (replace with your values)
-    string public tokenName = "YOUR_TOKEN_NAME";
-    string public tokenAbbrv = "YOUR_TOKEN_ ABBREVIATION";
-    uint public totalSupply = YOUR_TOTAL_SUPPLY; // Replace with your desired total supply
+    // public variables here
+    string public tokenName = "FunnyCoin";
+    string public tokenAbbrv = "FC";
+    uint public totalSupply = 1000;
 
-    // Mapping variable here
+    // mapping variable here
     mapping(address => uint112) public balances;
 
-    // Mint function (unchanged)
-    function mintrump(address _addy, uint112 _supplyamount) public {
+    // mint function
+    function mintrump(address _address, uint112 _supplyamount) public {
         totalSupply += _supplyamount;
-        balances[_addy] += _supplyamount;
+        balances[_address] += _supplyamount;
     }
 
-    // Burn function (unchanged)
-    function burn(address _addy, uint112 _supplyvalue) public {
-        require(balances[_addy] >= _supplyvalue, "Unable to burn because balance is insufficient");
+    // burn function
+    function burn(address _address, uint112 _supplyvalue) public {
+        require(balances[_address] >= _supplyvalue, "Unable to burn because balance is insufficient");
         totalSupply -= _supplyvalue;
-        balances[_addy] -= _supplyvalue;
+        balances[_address] -= _supplyvalue;
     }
 }
-
